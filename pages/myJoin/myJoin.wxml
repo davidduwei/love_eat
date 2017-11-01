@@ -1,0 +1,11 @@
+<!--myJoin.wxml-->
+<view class="container">
+  <table class="table">
+    <tr class="{{index%2 == 1 ? 'tr':'tr tr-color'}}" wx:for="{{listData}}" wx:key="index" id="{{item.index}}" bindtap="handleTodetail">
+      <td class="td td-flex-5">{{item.name}}</td>
+      <td class="td td-flex-3">{{item.hasNum+'/'+item.num}}</td>
+      <td class="td  td-flex-4">{{item.time}}</td>
+       <td class="td  td-flex-4">'状态'</td>
+    </tr>
+  </table>
+</view>

@@ -1,0 +1,59 @@
+<!--personal.wxml-->
+<import src="../template/template.wxml" />
+<view class="container">
+  <view class="userInfo display-flex row-line-personal">
+    <view class="user-photo flex-3">
+      <image class="user-photo-image" src="{{userInfo.avatarUrl}}" />
+    </view>
+    <view class="user-name flex-5">
+      {{userInfo.nickName}}
+    </view>
+    <view class="user-set flex-2">
+    </view>
+  </view>
+  <view class="edit-baseInfo row-line-personal display-flex">
+      <view class="flex-5">
+        <text class="item-head">性别：</text>
+        <view class="inline-box input-unreal input-edit">
+          <picker mode="selector" bindchange="bindPickerChangeSex" value="{{index}}" range="{{sex}}">  
+            <text class="picker">  
+              {{sex[index]}}  
+            </text>  
+          </picker> 
+        </view>
+      
+      </view>
+      <view class="flex-5">
+        <text class="item-head">年龄：</text>
+        <view class="inline-box input-unreal input-edit">
+          <picker mode="selector" bindchange="bindPickerChangeAge" value="{{age}}" range="{{ages}}">  
+            <text class="picker">  
+              {{ages[age]}}  
+            </text>  
+          </picker>
+        </view> 
+      </view>
+    </view>
+    <view class="edit-hobby row-line-personal">
+      <view class="item-head">个人爱好：<span>{{chooseCount}}/5</span></view>
+
+      <checkbox-group bindchange="checkboxChangeHobby">  
+        <label class="checkbox" wx:for="{{hobbyChoice}}" wx:key="id">  
+          <checkbox value="{{item.id}}" checked="{{item.checked}}"/>{{item.hobbyName}}  
+        </label>  
+      </checkbox-group>  
+
+      <!--<view class="style-inline" wx:for="{{hobbyChoice}}" wx:key="id" >
+        <text>{{item.name}}</text>
+      </view>-->
+    </view>
+    <view class="edit-area row-line-personal">
+      <view  class="item-head">日常活动区域：</view>
+      <view>
+         <image src="../../images/timg.jpg" />
+      </view>
+    </view>
+    <view class="row-line-personal">
+      <button  size="default" type="primary" bindtap="handleSubmit">提交</button>  
+    </view>
+</view>

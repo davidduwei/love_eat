@@ -1,12 +1,17 @@
 {
   "pages":[
     "pages/index/index",
-    "pages/logs/logs"
+    "pages/personal/personal",
+    "pages/template/template",
+    "pages/myCreate/myCreate",
+    "pages/myJoin/myJoin",
+    "pages/activeDetail/activeDetail",
+    "pages/editPersonal/editPersonal",
+    "pages/addActivity/addActivity",
+    "pages/signActivity/signActivity"
   ],
   "window":{
-    "backgroundTextStyle":"light",
-    "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "WeChat",
-    "navigationBarTextStyle":"black"
+    "navigationBarTitleText": "See in u",
+    "navigationBarTextStyle":"#f5634c"
   }
 }

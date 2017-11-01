@@ -1,0 +1,43 @@
+<import src="../template/template.wxml" />
+<view class="container">
+  <view class="row-line border-bottom">
+    <text class='item-head'>活动主题：</text>
+    <text>{{activityInfo.subject}}</text>
+  </view>
+  <view class="row-line border-bottom">
+    <text class='item-head'>活动标签：</text>
+    <text class="tag-style">标签1</text><text class="tag-style">tag1</text>
+  </view>
+  <view class="row-line border-bottom">
+   <text class='item-head'>活动时间：</text>
+      <text>{{activityInfo.time}}</text>
+  </view>
+  <view class="row-line border-bottom">
+    <text class='item-head'>活动地点：</text>
+    <text>{{activityInfo.addr}}</text>
+  </view>
+  <view class="display-flex row-line border-bottom">
+    <view class="flex-5">
+      <text>参加人数：</text>
+      <text>{{activityInfo.has+'/'+activityInfo.total}}</text>
+    </view>
+    <view class="flex-5">
+      <text>人均费用：</text>
+      <text>{{activityInfo.money}}</text>
+    </view>
+  </view>
+  <view class="row-line border-bottom">
+      <text class='item-head'>联系方式：</text>
+      <text>{{activityInfo.orgTel}}</text>
+  </view>
+  <view class="row-line-content">
+      <text class='item-head'>活动内容：</text>
+      <view class='item-body'>
+        <textarea disabled='true' class="textarea" type="text" value="{{activityInfo.content}}"></textarea>
+      </view>
+  </view>
+  <view class="submit-btn">
+    <button size="default" type="primary" bindtap="handleAttend">报名</button>  
+  </view> 
+  
+</view>

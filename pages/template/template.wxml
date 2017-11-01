@@ -1,0 +1,90 @@
+<template name="head">
+  <view class="page-head">
+    <view>{{left}}</view>
+    <view>{{title}}</view>
+    <view>{{right}}</view>
+  </view>
+</template>
+
+<template name="footer">
+  <view class="page-footer">
+    <button class="footer-btn">{{text}}</button>
+  </view>
+</template>
+
+<template name="personalDetail">
+  <view>
+    <view class="detail-hobby">
+      <view>个人爱好</view>
+      <view class="style-inline" wx:for="{{hobbyArr}}" wx:key="id">
+        <text>{{item.name}}</text>
+      </view>
+    </view>
+    <view class="detail-area">
+      <view>日常活动区域</view>
+      <view>
+        大图
+      </view>
+    </view>
+    <view class="detail-logs">
+      <view>历史记录</view>
+      <view>
+        <view>我发布的活动</view>
+        <view class="style-inline" wx:for="{{createArr}}" wx:key="id" bindtap='handleToMyCreate'>
+          <text>{{item.name}}</text>
+        </view>
+      </view>
+      <view>
+        <view>我参与的活动</view>
+        <view class="style-inline" wx:for="{{joinArr}}" wx:key="id" bindtap='handleToMyJoin'>
+          <text>{{item.name}}</text>
+        </view>
+      </view>
+    </view>
+  </view>
+</template>
+
+
+<template name="personalEdit">
+  <view>
+    <view class="edit-baseInfo display-flex">
+      <view class="flex-5">
+        <text>性别：</text>
+        <picker class="style-inline" bindchange="bindPickerChangeSex" value="{{index}}" range="{{sex}}">  
+          <text class="picker">  
+            {{sex[index]}}  
+          </text>  
+        </picker> 
+      
+      </view>
+      <view class="flex-5">
+        <text>年龄：</text>
+        <picker class="style-inline" bindchange="bindPickerChangeAge" value="{{age}}" range="{{ages}}">  
+          <text class="picker">  
+            {{ages[age]}}  
+          </text>  
+        </picker> 
+      </view>
+    </view>
+    <view class="edit-hobby">
+      <view>个人爱好<span>/5</span></view>
+
+      <checkbox-group bindchange="checkboxChangeHobby">  
+        <label class="checkbox" wx:for="{{hobbyChoice}}" wx:key="id">  
+          <checkbox value="{{item.id}}" checked="{{item.checked}}"/>{{item.hobbyName}}  
+        </label>  
+      </checkbox-group>  
+
+      <!--<view class="style-inline" wx:for="{{hobbyChoice}}" wx:key="id" >
+        <text>{{item.name}}</text>
+      </view>-->
+    </view>
+    <view class="edit-area">
+      <view>日常活动区域</view>
+      <view>
+        大图
+      </view>
+    </view>
+    <button size="default" type="primary" bindtap="handleSubmit">提交</button>  
+  </view>
+</template>

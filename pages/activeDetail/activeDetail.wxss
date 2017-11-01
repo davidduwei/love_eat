@@ -1,0 +1,8 @@
+/* pages/activeDetail/activeDetail.wxss */
+.border-bottom{
+  border-bottom: 1px solid #ccc;
+}
+.row-line{
+  line-height: 55px;
+  min-height: 55px
+}

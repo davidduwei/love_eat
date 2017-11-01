@@ -1,0 +1,10 @@
+/* pages/signActivity/signActivity.wxss */
+.border-bottom{
+  border-bottom: 1px solid #ddd;
+}
+.row-line{
+  margin-top: 20px
+}
+ .row-line-content textarea{
+  border-bottom: 1px solid #ddd;
+}

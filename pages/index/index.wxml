@@ -2,14 +2,14 @@
 
 <map id="map" longitude="{{cur_pos[0]}}" latitude="{{cur_pos[1]}}" scale="14"  markers="{{markers}}" bindmarkertap="markertap" show-location style="width: 100%; height: 100vh;"></map>
 <view class="footer">
-	<view class="c_l">
+	<view bindtap="bindViewTap" class="c_l">
 		<image style="width: 30px;height: 30px" src="../../images/icon_acc.png"></image>
 	</view>
-	<view class="publish flex-item">
+	<view bindtap="toActivity" class="publish flex-item">
 		<image style="width: 30px;height: 30px" src="../../images/icon_write.png"></image>
 		<text>发布活动</text>
 	</view>
-	<view class="c_r">
+	<view bindtap="initLocation" class="c_r">
 		<image bindtap="init" style="width: 30px;height: 30px" src="../../images/icon_filter.png"></image>
 	</view>
 </view>

@@ -1,0 +1,45 @@
+<!--myJoin.wxml-->
+<view class="container">
+  <view class="row-line border-bottom">
+    <text class='item-head'>活动主题：</text>
+    <text>{{detailData.subject}}</text>
+  </view>
+  <view class="row-line border-bottom">
+    <text class='item-head'>活动标签：</text>
+    <text  class="tag-style" wx:for="{{tag}}" wx:key="id">{{item.name}}</text>
+  </view>
+  <view class="row-line border-bottom">
+    <text class='item-head'>活动时间：</text>
+    <text>{{detailData.time}}</text>
+  </view>
+  <view class="row-line border-bottom">
+    <text class='item-head'>活动地址：</text>
+    <text>{{detailData.addr}}</text>
+  </view>
+  <view class="display-flex row-line border-bottom">
+    <view class="flex-5">
+      <i class="iconfont icon-multi"></i>
+      <text>{{detailData.num+'/'+detailData.total}}</text>
+    </view>
+    <view class="flex-5">
+      <i class="iconfont icon-coinyen"></i>
+      <text>{{detailData.money}}</text>
+    </view>
+  </view>
+
+   <view class="row-line border-bottom">
+      <text class='item-head'>联系方式</text>
+       <text>{{detailData.telNum}}</text>
+  </view>
+  <view class="row-line-content border-bottom">
+      <text class='item-head'>活动内容</text>
+     <view class='item-body'>
+       <text>{{detailData.content}}</text>
+     </view>
+  </view>
+
+  <view class="row-line">
+      <i class="iconfont icon-Checked-User"></i>
+      <text wx:for="{{attendsList}}" wx:key="id">{{item.name}}</text>
+  </view>
+</view>

@@ -1,0 +1,26 @@
+/*personal.wxss*/
+.userInfo{
+  height:200rpx;
+  line-height:200rpx;
+
+}
+.edit-baseInfo .style-inline{
+  padding:0rpx 50rpx;
+}
+.user-photo-image{
+  width: 100%;
+  height: 100%;
+  border-radius: 50%
+}
+.user-name{
+  padding-left: 40rpx
+}
+.row-line-personal{
+  margin: 20px 0
+}
+.iconfont{
+  font-size:40px
+}
+.history-actvity{
+  margin: 20px 0 15px 0;
+}

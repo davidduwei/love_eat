@@ -1,0 +1,10 @@
+.page-footer{
+  height: 100rpx;
+  position: fixed;
+  bottom:0;
+}
+.page-footer .footer-btn{
+    width: 100rpx;
+    border-radius: 50rpx;
+    background: blue
+  }

@@ -1,0 +1,46 @@
+<!--personal.wxml-->
+<import src="../template/template.wxml" />
+<view class="container">
+  <view class="userInfo display-flex row-line-personal">
+    <view class="user-photo flex-3">
+      <image class="user-photo-image" src="{{userInfo.avatarUrl}}" />
+    </view>
+    <view class="user-name flex-5">
+      {{userInfo.nickName}}
+    </view>
+    <view class="user-set flex-2">
+      <i bindtap="handleSetInfo" class="iconfont icon-set" style="color:#aaa"></i>
+    </view>
+  </view>
+  <view class="row-line-personal">
+    <view class="detail-hobby">
+      <view class="item-head">个人标签：</view>
+      <view class="inline-box item-body" >
+        <text class="tag-style" wx:for="{{hobbyArr}}" wx:key="id">{{item.name}}</text>
+      </view>
+    </view>
+    <view class="detail-area row-line-personal">
+      <view class="item-head">日常活动区域：</view>
+      <view class="item-body">
+        <map id="map" scale="14" style="width: 100%; height: 150px;"></map>
+      </view>
+    </view>
+    <view class="detail-logs row-line-personal">
+      <view class="item-head">历史记录：</view>
+      <view class="display-flex">
+        <view class="item-body flex-5" style="text-align: center;" bindtap='handleToMyCreate'>
+          <view class="history-actvity">
+             <i class="iconfont icon-guanlianshangjiahuodongyiji" style="color:#efb336"></i>
+          </view>
+          <view>我发布的活动</view>
+        </view>
+        <view class="item-body flex-5" style="text-align: center;"  bindtap='handleToMyJoin'>
+          <view class="history-actvity">
+            <i class="iconfont icon-activity" style="color:#e7a010"></i>
+          </view>
+          <view>我参与的活动</view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

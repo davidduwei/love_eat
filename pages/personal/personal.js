@@ -1,6 +1,5 @@
 const app = getApp();
 var userInfo = wx.getStorageSync('userInfo');
-console.log(userInfo)
 Page({
   data:{
     userInfo: userInfo,

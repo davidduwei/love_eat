@@ -19,7 +19,6 @@ App({
                     },
                     success: function(data) {
                         if (data.statusCode == 200) {
-                            console.log(that.globalData.userInfo)
                             var res = data.data;
                             if (res.user) {
                                 wx.setStorageSync('userId',res.user.id);

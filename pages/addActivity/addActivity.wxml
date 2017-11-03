@@ -3,60 +3,63 @@
   <view class="row-line">
     <text class='item-head'>活动主题：</text>
     <view class='item-body'>
-      <input type="text" placeholder="请输入主题" name="subject" bindinput='handleChangeInput'/>
+      <input type="text" placeholder="请输入主题" name="subject" data-key="subject" bindinput='handleChangeInput'/>
     </view>
   </view>
   <view class="row-line">
     <text class='item-head'>活动标签：</text>
     <view class='item-body'>
-      <text class="{{item.isChooses?'tag-style active':'tag-style'}}" id="{{'tags_'+item.id}}" wx:for = "{{tags}}" wx:key="id" bindtap='chooseHobby'>{{item.tagName}}</text>
+      <text class="{{item.isChooses?'tag-style active':'tag-style'}}" id="{{'tags_'+item.id}}" wx:for = "{{tags}}" wx:key="id" bindtap='chooseHobby' data-index="{{index}}">{{item.name}}</text>
     </view>
   </view>
   <view class="row-line">
     <text class='item-head'>活动时间：</text>
-    <view class='item-body input-unreal'>
-      <picker class="inline-box" mode="date" value="{{date}}" start="2015-09-01" end="2017-09-01" bindchange="bindDateChange">  
-        <view class="picker">{{date}}</view>  
+    <view class='item-body input-unreal input-times'>
+      <picker class="inline-box" mode="date" value="{{params.date}}" bindchange="bindDateChange">  
+        <view class="picker">{{params.date}}</view>  
       </picker> 
-      <picker class="inline-box" mode="time" value="{{time}}" start="09:01" end="21:01" bindchange="bindTimeChange">  
-        <view class="picker">{{time}}</view>  
+      <picker class="inline-box" mode="time" data-key="startTime" value="{{params.startTime}}" bindchange="bindTimeChange">  
+        <view class="picker">{{params.startTime}}</view>  
+      </picker> — <picker class="inline-box" mode="time" data-key="endTime" value="{{params.endTime}}" bindchange="bindTimeChange">  
+        <view class="picker">{{params.endTime}}</view>  
       </picker> 
     </view>
   </view>
   <view class="display-flex row-line">
     <view class="flex-5">
-      <text class='item-head'>活动人数：</text>
+      <text class='item-head'>地址：</text>
       <view class='item-body'>
-        <input class="short-input" placeholder='输入人数' type="number" />
+        <input class="short-input" disabled="true" bindtap="selectAddress" placeholder='请选择地址' type="text" value="{{params.address}}" />
       </view>
     </view>
     <view class="flex-5">
       <text class='item-head'>人均花费：</text>
       <view class='item-body'>
-        <input class="short-input" placeholder='输入人均经费' type="number" />
+        <input class="short-input" data-key="amountExplain" bindinput='handleChangeInput' placeholder='输入人均经费' type="text" />
       </view>
     </view>
   </view>
-  <view class="row-line">
-    <text class='item-head'>活动地点：</text><text>地址应该是带过来的吧</text>
+  <view style="display:{{longitude ? 'block' : 'none'}}" class="row-line">
+    <text class='item-head'>活动地点：</text>
     <view class='item-body'>
-       <map id="map" scale="14" style="width: 100%; height: 150px;"></map>
+       <map id="activeMap" markers="{{markers}}" longitude="{{longitude}}" latitude="{{latitude}}" scale="14" style="width: 100%; height: 150px;"></map>
     </view>
   </view>
   
   <view class="row-line">
       <text class='item-head'>联系方式：</text>
       <view class='item-body'>
-        <input type="number" placeholder='电话/微信/QQ'/>
+        <input type="text" data-key="concatWay" bindinput='handleChangeInput' placeholder='电话/微信/QQ'/>
       </view>
   </view>
   <view class="row-line-content">
       <text class='item-head'>活动内容：</text>
      <view class='item-body'>
-       <textarea class="textarea" type="text" placeholder='请输入活动内容'></textarea>
+       <textarea class="textarea" data-key="content" bindinput='handleChangeInput' type="text" placeholder='请输入活动内容'></textarea>
      </view>
   </view>
   <view class="submit-btn">
     <button size="default" type="primary" bindtap="handleSubmit">发布活动</button>
-  </view>  
+  </view>
+  <modal title="提示" hidden="{{modal.hidden}}" bindconfirm="listenerConfirm" bindcancel="listenerCancel">{{modal.title}}</modal>
 </view>

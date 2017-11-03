@@ -9,7 +9,7 @@
 		<image style="width: 30px;height: 30px" src="../../images/icon_write.png"></image>
 		<text>发布活动</text>
 	</view>
-	<view bindtap="initLocation" class="c_r">
+	<view bindtap="reBackLocation" class="c_r">
 		<image bindtap="init" style="width: 30px;height: 30px" src="../../images/icon_filter.png"></image>
 	</view>
 </view>

@@ -1,7 +1,6 @@
 // pages/editPersonal/editPersonal.js
 const app = getApp();
 var userInfo = wx.getStorageSync('userInfo');
-console.log(userInfo)
 Page({
 
   /**

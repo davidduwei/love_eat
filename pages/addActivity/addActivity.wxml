@@ -9,7 +9,7 @@
   <view class="row-line">
     <text class='item-head'>活动标签：</text>
     <view class='item-body'>
-      <text class="{{item.isChooses?'tag-style active':'tag-style'}}" id="{{'tags_'+item.id}}" wx:for = "{{tags}}" wx:key="id" bindtap='chooseHobby'>{{item.tagName}}</text>
+      <text class="{{item.isChooses?'tag-style active':'tag-style'}}" id="{{item.id}}" wx:for = "{{tags}}" wx:key="id" bindtap='chooseHobby'>{{item.tagName}}</text>
     </view>
   </view>
   <view class="row-line">
@@ -23,18 +23,10 @@
       </picker> 
     </view>
   </view>
-  <view class="display-flex row-line">
-    <view class="flex-5">
-      <text class='item-head'>活动人数：</text>
-      <view class='item-body'>
-        <input class="short-input" placeholder='输入人数' type="number" />
-      </view>
-    </view>
-    <view class="flex-5">
-      <text class='item-head'>人均花费：</text>
-      <view class='item-body'>
-        <input class="short-input" placeholder='输入人均经费' type="number" />
-      </view>
+  <view class="row-line">
+    <text class='item-head'>人均花费：</text>
+    <view class='item-body'>
+      <input placeholder='输入人均经费' type="number" bindinput="handleInputMoney"/>
     </view>
   </view>
   <view class="row-line">
@@ -47,13 +39,13 @@
   <view class="row-line">
       <text class='item-head'>联系方式：</text>
       <view class='item-body'>
-        <input type="number" placeholder='电话/微信/QQ'/>
+        <input placeholder='电话/微信/QQ' bindinput="handleInputTelNum"/>
       </view>
   </view>
   <view class="row-line-content">
       <text class='item-head'>活动内容：</text>
      <view class='item-body'>
-       <textarea class="textarea" type="text" placeholder='请输入活动内容'></textarea>
+       <textarea class="textarea" type="text" placeholder='请输入活动内容' bindinput="handleInputContent"></textarea>
      </view>
   </view>
   <view class="submit-btn">

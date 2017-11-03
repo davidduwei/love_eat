@@ -14,8 +14,9 @@ Page({
     sex: ['男', '女'],
     age: 9,
     ages: [13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34],
-    hobbyChoice: [{ 'id': 0, hobbyName: "电影" }, { 'id': 1, hobbyName: "篮球" }, { 'id': 2, hobbyName: "足球" }, { 'id': 3, hobbyName: "旅游" }, { 'id': 4, hobbyName: "美食" }, { 'id': 5, hobbyName: "阅读" }, { 'id': 6, hobbyName: "音乐" }, { 'id': 7, hobbyName: '写字' }, { id: 8, hobbyName: '游戏' }, { id: 9, hobbyName: '美妆' }, { id: 10, hobbyName: '科技' }, { id: 11, hobbyName: '画画' }, { id: 12, hobbyName: '麻友' }, { id: 13, hobbyName: '唱歌' }],
-    chooseCount:0
+    hobbyChoice: [{ 'id': 0, hobbyName: "电影", disable: false }, { 'id': 1, hobbyName: "篮球", disable: false }, { 'id': 2, hobbyName: "足球", disable: false }, { 'id': 3, hobbyName: "旅游", disable: false }, { 'id': 4, hobbyName: "美食", disable: false  }, { 'id': 5, hobbyName: "阅读" }, { 'id': 6, hobbyName: "音乐" }, { 'id': 7, hobbyName: '写字' }, { id: 8, hobbyName: '游戏' }, { id: 9, hobbyName: '美妆' }, { id: 10, hobbyName: '科技' }, { id: 11, hobbyName: '画画' }, { id: 12, hobbyName: '麻友' }, { id: 13, hobbyName: '唱歌' }],
+    chooseCount:0,
+    disableCheck: false
   },
 
   /**
@@ -76,22 +77,23 @@ Page({
   },
   bindPickerChangeSex(e) {
     console.log(e)
-    var editData = this.data.editData;
-    editData.index = e.detail.value;
     this.setData({
-      editData
+      index: e.detail.value
     })
   },
   bindPickerChangeAge(e) {
     console.log(e)
-    var editData = this.data.editData;
-    editData.age = e.detail.value;
     this.setData({
-      editData
+      age: e.detail.value
     })
   },
   checkboxChangeHobby: function (e) {
-    this.setData({ chooseCount: e.detail.value.length})
+    if (e.detail.value.length<=5){
+      this.setData({ chooseCount: e.detail.value.length })
+    }else{
+      this.setData({ chooseCount: 5 })
+    }
+    
   },
   handleSubmit() {
     console.log('提交编辑的内容')

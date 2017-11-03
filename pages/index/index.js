@@ -1,12 +1,12 @@
 //index.js
 //获取应用实例
 var app = getApp()
-
+var userInfo = wx.getStorageSync('userInfo');
 Page({
   data: {
     motto: 'Hello World',
     userInfo: {},
-    hasUserInfo: false,
+    hasUserInfo: false,         
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
     footer:{
       text:"发布"
@@ -44,7 +44,8 @@ Page({
   },
   onLoad: function () {
     var that = this;
-    if (app.globalData.userInfo) {
+    //if (app.globalData.userInfo) {
+    if (userInfo) {
       this.initLocation(function(res){
         that.setData({
           markers: [{

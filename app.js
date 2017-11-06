@@ -19,11 +19,11 @@ App({
                     },
                     success: function(data) {
                         if (data.statusCode == 200) {
-                            console.log(that.globalData.userInfo)
                             var res = data.data;
                             if (res.user) {
                                 wx.setStorageSync('userId',res.user.id);
                                 that.globalData.userInfo.userId = res.user.id;
+                                wx.setStorageSync('user', res.user);
                             } else {
                                 that.saveOpenId(res);
                             }
@@ -56,7 +56,7 @@ App({
     saveOpenId: function(res) {
         var that = this;
         wx.request({
-            url: api.saveUser,
+          url: Api.saveUser,
             method: 'post',
             data: {
                 openId: res.openid,
@@ -67,6 +67,7 @@ App({
             success: function(res) {
                 wx.setStorageSync('userId',res.result);
                 that.globalData.userInfo.userId = res.result;
+                console.log(that.globalData.userInfo.userId)
             }
         })
     },

@@ -3,10 +3,10 @@
 <view class="container">
   <view class="userInfo display-flex row-line-personal">
     <view class="user-photo flex-3">
-      <image class="user-photo-image" src="{{userInfo.avatarUrl}}" />
+      <image class="user-photo-image" src="{{userInfo.headImage}}" />
     </view>
     <view class="user-name flex-5">
-      {{userInfo.nickName}}
+      {{userInfo.name}}
     </view>
     <view class="user-set flex-2">
     </view>
@@ -28,7 +28,7 @@
         <view class="inline-box input-unreal input-edit">
           <picker mode="selector" class="picker-input" bindchange="bindPickerChangeAge" value="{{age}}" range="{{ages}}">  
             <text class="picker">  
-              {{ages[age]}}  
+              {{userInfo.age || ages[age]}}  
             </text>  
           </picker>
         </view> 
@@ -42,8 +42,8 @@
 
       <checkbox-group bindchange="checkboxChangeHobby">  
         <label class="checkbox" wx:for="{{hobbyChoice}}" wx:key="id">  
-          <checkbox value="{{item.id}}" checked="{{item.checked}}"/>
-          <text>{{item.hobbyName}}</text>
+          <checkbox value="{{item.id}}" disabled='{{item.disabled}}' checked="{{item.checked}}"/>
+          <text>{{item.name}}</text>
         </label>  
       </checkbox-group>  
 

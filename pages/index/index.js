@@ -13,6 +13,7 @@ Page({
             text: "发布"
         },
         markers: [],
+        cacheIds:[],
         cur_pos: []
     },
     //事件处理函数
@@ -52,10 +53,18 @@ Page({
             url: '../signActivity/signActivity?id='+id
         })
     },
-    onReady: function(){
-        this.getRegionData();
+    onHide: function(){
+        clearInterval(this.timer);
+        this.timer = null;
     },
-    onLoad: function() {
+    onReady: function(){
+        // console.log(1)
+        // var that = this;
+        // this.timer = setInterval(function(){
+        //     that.getRegionData();
+        // },1000)
+    },
+    onShow: function() {
         var that = this;
         // 使用 wx.createMapContext 获取 map 上下文
         this.mapCtx = wx.createMapContext('myMap');
@@ -86,6 +95,9 @@ Page({
                 }
             })
         }
+        this.timer = setInterval(function(){
+            that.getRegionData();
+        },1000)
     },
     getRegionData(){
         var that = this;
@@ -94,7 +106,7 @@ Page({
                 wx.request({
                     url: Api.getNearBy + res.longitude + '/' + res.latitude + '/1000', 
                     success: function(data){
-                        var markers = [];
+                        var markers = [] , cIds = [] , status = false;
                         data.data.map((res) => {
                             markers.push({
                                 iconPath: "/images/type/"+(res.tagId || 'all')+".png",
@@ -104,17 +116,24 @@ Page({
                                 width: 50,
                                 height: 50
                             })
+                            cIds.push(res.id);
+                            if(that.data.cacheIds.indexOf(res.id) < 0){
+                                status = true;
+                            }
                         })
-                        that.setData({
-                            markers: markers
-                        })
+                        if(status){
+                            that.setData({
+                                markers: markers,
+                                cacheIds:cIds
+                            })
+                        }
                     }
                 })
             }
         }) 
     },
     regionChange(){
-        this.getRegionData();
+        //this.getRegionData();
     },
     getUserInfo: function(e) {
         app.globalData.userInfo = e.detail.userInfo

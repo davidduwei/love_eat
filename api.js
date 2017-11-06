@@ -7,5 +7,6 @@ module.exports = {
   getMyPublishList: baseUrl+'/group/activity/my/publish/list',
   getAllHobby : baseUrl + '/tag/hobby',
 	getTag: baseUrl + '/tag/activity',
-	saveActive: baseUrl + '/group/activity/save'
+	saveActive: baseUrl + '/group/activity/save',
+  getActivityDetail: baseUrl + '/group/activity/detail'
 }

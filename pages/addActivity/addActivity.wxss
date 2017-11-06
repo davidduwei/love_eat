@@ -1,1 +1,17 @@
 /* pages/addActivity/addActivity.wxss */
+.row-line .item-head{vertical-align: middle;}
+.address{
+	display:inline-block;
+	border: 1rpx solid #ccc;
+	border-radius: 5px;
+	height: 30px;
+	line-height: 30px;
+	width: 80%;
+	padding-left:10rpx;
+	vertical-align: middle;	
+}
+.input-times{
+	display:block;
+	width:100%;
+}
+.input-times .inline-box{ margin : 0 5px; padding: 0;}

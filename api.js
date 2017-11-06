@@ -5,5 +5,7 @@ module.exports = {
   getPersonal: baseUrl + '/user/openid',
   getMyJoinList: baseUrl+'/group/activity/my/join/list',
   getMyPublishList: baseUrl+'/group/activity/my/publish/list',
-  getAllHobby : baseUrl + '/tag/hobby'
+  getAllHobby : baseUrl + '/tag/hobby',
+	getTag: baseUrl + '/tag/activity',
+	saveActive: baseUrl + '/group/activity/save'
 }

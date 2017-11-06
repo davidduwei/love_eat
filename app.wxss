@@ -63,7 +63,8 @@ input,.input-unreal{
   border: 1rpx solid #ccc;
   border-radius: 5px;
   height: 30px;
-  padding-left:10rpx
+  padding-left:10rpx;
+  vertical-align: middle;
 }
 input{
   width:100%
@@ -182,6 +183,8 @@ input:hover,.input-unreal:hover{
 .inline-box{
   display: inline-block;
   padding-right: 10px;
+  height: 30px;
+  line-height: 30px;
 }
 .submit-btn{
   margin:15px 0;

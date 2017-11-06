@@ -28,7 +28,8 @@ Page({
         })
     },
     reBackLocation: function() {
-        this.initLocation();
+        //this.initLocation();
+        this.mapCtx.moveToLocation()
     },
     // 初始化定位
     initLocation: function(callback) {
@@ -44,6 +45,10 @@ Page({
                 };
             }
         })
+    },
+    onReady: function(){
+        // 使用 wx.createMapContext 获取 map 上下文
+        this.mapCtx = wx.createMapContext('myMap');
     },
     onLoad: function() {
         var that = this;

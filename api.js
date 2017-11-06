@@ -8,5 +8,8 @@ module.exports = {
   getAllHobby : baseUrl + '/tag/hobby',
 	getTag: baseUrl + '/tag/activity',
 	saveActive: baseUrl + '/group/activity/save',
-  getActivityDetail: baseUrl + '/group/activity/detail'
+  getActivityDetail: baseUrl + '/group/activity/detail',
+	getNearBy: baseUrl + '/group/activity/nearby/list/',
+	getDetail: baseUrl + '/group/activity/detail', //获取详情信息
+	takePartInActive: baseUrl + '/group/activity/join', //参加活动
 }

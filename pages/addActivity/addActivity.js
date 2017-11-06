@@ -29,7 +29,7 @@ Page({
             success: function(res){
                 console.log(res)
                 var params = that.data.params;
-                params.address = res.address;
+                params.addressDesc = res.address;
                 params.appointmentLatitude = res.latitude;
                 params.appointmentLongitude = res.longitude;
                  that.setData({
@@ -142,8 +142,14 @@ Page({
 
     },
     handleSubmit() {
-        var params = this.data.params;
-        if(!params.publisherId || !params.subject || !params.currentLatitude  || !params.concatWay  || !params.appointmentLatitude || !params.date || !params.startTime || !params.endTime ){
+        var that = this,  params = this.data.params;
+         this.data.tags.map((res) => {
+            if(res.isChooses){
+                params.tagId = res.id;
+                params.tagName = res.name;
+            }
+        })
+        if(!params.publisherId || !params.subject || !params.currentLatitude  || !params.concatWay  || !params.appointmentLatitude || !params.date || !params.startTime || !params.endTime || !params.tagId ){
             this.setData({
                 modal:{
                     title:"请填写完整信息",
@@ -152,14 +158,18 @@ Page({
             })
             return 
         }
-        params.appointmentEndTime = params.date + ' ' + params.endTime + ':00';
-        params.appointmentStartTime = params.date + ' ' + params.startTime + ':00';
+        params.appointmentEndTimeStr = params.date + ' ' + params.endTime + ':00';
+        params.appointmentStartTimeStr = params.date + ' ' + params.startTime + ':00';
         wx.request({
             method:'post',
             url: Api.saveActive,
             data:this.data.params,
             success: function(res){
-                console.log(res);
+                if(res.statusCode == 200){
+                    wx.navigateTo({
+                        url: '../index/index'
+                    })
+                }
             }
         })
     },

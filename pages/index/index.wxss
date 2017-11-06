@@ -19,8 +19,20 @@
 .usermotto {
   margin-top: 200px;
 }
+.mapbox{
+	position: absolute;
+	width: 100%;
+	height: 100vh;
+	left: 0;
+	top: 0;
+	z-index: 1;
+}
+.mapbox map{
+	height: 80vh;
+	width: 100%;
+}
 .footer{
-	position:fixed;
+	position:absolute;
 	bottom:0;
 	left:0;
 	width:100%;
@@ -29,6 +41,7 @@
 	color:#666;
 	text-align:center;
 	display:flex;
+	z-index:2;
 }
 .footer .c_l{
 	float:left;
@@ -51,7 +64,7 @@
 	float:left;
 	line-height:normal;
 	padding-top:2vh;
-	font-size: 16px;
+	font-size: 2.5vh;
 }
 .footer .publish text{
 	display:inline-block;

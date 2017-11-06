@@ -29,7 +29,7 @@
     <view class="flex-5">
       <text class='item-head'>地址：</text>
       <view class='item-body'>
-        <input class="short-input" disabled="true" bindtap="selectAddress" placeholder='请选择地址' type="text" value="{{params.address}}" />
+        <input class="short-input" disabled="true" bindtap="selectAddress" placeholder='请选择地址' type="text" value="{{params.addressDesc}}" />
       </view>
     </view>
     <view class="flex-5">

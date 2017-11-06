@@ -38,7 +38,7 @@ Page({
                     latitude: res.latitude,
                     markers:[
                         {
-                            iconPath: "/images/type/1.png",
+                            iconPath: "/images/type/all.png",
                             id: 3,
                             latitude: res.latitude,
                             longitude: res.longitude,
@@ -73,21 +73,29 @@ Page({
         return  t < 10 ? '0' + t : t;
     },
     onLoad: function(options) {
-        var myDate = new Date();
-        var params = this.data.params;
-        params.date = myDate.getFullYear() + '-' + this.format(myDate.getMonth()) + '-' + this.format(myDate.getDay());
-        params.time = this.format(myDate.getHours()) + ':' + this.format(myDate.getMinutes());
-        this.setData({
-                params:params
-            })
-            // 获取标签
-        this.getTag();
+        
     },
 
     /**
      * 生命周期函数--监听页面初次渲染完成
      */
     onReady: function() {
+        
+    },
+
+    /**
+     * 生命周期函数--监听页面显示
+     */
+    onShow: function() {
+        var myDate = new Date();
+        var params = this.data.params;
+        params.date = myDate.getFullYear() + '-' + this.format(myDate.getMonth()+1) + '-' + this.format(myDate.getDate());
+        params.time = this.format(myDate.getHours()) + ':' + this.format(myDate.getMinutes());
+        this.setData({
+                params:params
+            })
+            // 获取标签
+        this.getTag();
         this.activeMap = wx.createMapContext('activeMap');
         var that = this, params = this.data.params;
         // 获取当前用户位置信息
@@ -98,13 +106,6 @@ Page({
                 params.publisherId = app.globalData.userInfo.userId;
             }
         })
-    },
-
-    /**
-     * 生命周期函数--监听页面显示
-     */
-    onShow: function() {
-
     },
 
     /**

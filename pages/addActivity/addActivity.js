@@ -151,14 +151,16 @@ Page({
             })
             return 
         }
-        params.appointmentEndTime = params.date + ' ' + params.endTime + ':00';
-        params.appointmentStartTime = params.date + ' ' + params.startTime + ':00';
+        params.appointmentEndTimeStr = params.date + ' ' + params.endTime + ':00';
+        params.appointmentStartTimeStr = params.date + ' ' + params.startTime + ':00';
         wx.request({
             method:'post',
             url: Api.saveActive,
             data:this.data.params,
             success: function(res){
-                console.log(res);
+                wx.navigateTo({
+                    url: '../index/index'
+                })
             }
         })
     },

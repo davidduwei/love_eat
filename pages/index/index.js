@@ -1,5 +1,6 @@
 //index.js
 //获取应用实例
+var Api = require('../../api.js')
 var app = getApp()
 
 Page({
@@ -16,7 +17,6 @@ Page({
     },
     //事件处理函数
     bindViewTap: function(event) {
-        console.log(event)
         wx.navigateTo({
             url: '../personal/personal'
         })
@@ -46,18 +46,25 @@ Page({
             }
         })
     },
+    markertap(e){
+        var id = e.markerId;
+        wx.navigateTo({
+            url: '../signActivity/signActivity?id='+id
+        })
+    },
     onReady: function(){
-        // 使用 wx.createMapContext 获取 map 上下文
-        this.mapCtx = wx.createMapContext('myMap');
+        this.getRegionData();
     },
     onLoad: function() {
         var that = this;
+        // 使用 wx.createMapContext 获取 map 上下文
+        this.mapCtx = wx.createMapContext('myMap');
         if (app.globalData.userInfo) {
             this.initLocation(function(res) {
                 that.setData({
                     markers: [{
                         iconPath: "/images/type/1.png",
-                        id: 3,
+                        id: 6,
                         latitude: res.latitude,
                         longitude: res.longitude,
                         width: 50,
@@ -93,6 +100,21 @@ Page({
                 }
             })
         }
+    },
+    getRegionData(){
+        this.mapCtx.getCenterLocation({
+            success: function(res){
+                wx.request({
+                    url: Api.getNearBy + res.longitude + '/' + res.latitude + '/1000', 
+                    success: function(res){
+                        console.log(res);
+                    }
+                })
+            }
+        }) 
+    },
+    regionChange(){
+        this.getRegionData();
     },
     getUserInfo: function(e) {
         app.globalData.userInfo = e.detail.userInfo

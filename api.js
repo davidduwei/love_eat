@@ -5,5 +5,6 @@ module.exports = {
 	getTag: baseUrl + '/tag/activity',
 	saveActive: baseUrl + '/group/activity/save',
 	getNearBy: baseUrl + '/group/activity/nearby/list/',
-	getDetail: baseUrl + '/group/activity/detail' //获取详情信息
+	getDetail: baseUrl + '/group/activity/detail', //获取详情信息
+	takePartInActive: baseUrl + '/group/activity/join', //参加活动
 }

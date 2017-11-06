@@ -6,29 +6,29 @@
   </view>
   <view class="row-line border-bottom">
     <text class='item-head'>活动标签：</text>
-    <text class="tag-style">标签1</text><text class="tag-style">tag1</text>
+    <text class="{{item.isChooses?'tag-style active':'tag-style'}}" id="{{'tags_'+item.id}}" wx:for = "{{activityInfo.tags}}" wx:key="id" data-index="{{index}}">{{item.name}}</text>
   </view>
   <view class="row-line border-bottom">
    <text class='item-head'>活动时间：</text>
-      <text>{{activityInfo.time}}</text>
+      <text>{{activityInfo.times}}</text>
   </view>
   <view class="row-line border-bottom">
     <text class='item-head'>活动地点：</text>
-    <text>{{activityInfo.addr}}</text>
+    <text>{{activityInfo.addressDesc}}</text>
   </view>
   <view class="display-flex row-line border-bottom">
     <view class="flex-5">
       <text>参加人数：</text>
-      <text>{{activityInfo.has+'/'+activityInfo.total}}</text>
+      <text>{{activityInfo.joinerCount}}</text>
     </view>
     <view class="flex-5">
       <text>人均费用：</text>
-      <text>{{activityInfo.money}}</text>
+      <text>{{activityInfo.amountExplain}}</text>
     </view>
   </view>
   <view class="row-line border-bottom">
       <text class='item-head'>联系方式：</text>
-      <text>{{activityInfo.orgTel}}</text>
+      <text>{{activityInfo.concatWay}}</text>
   </view>
   <view class="row-line-content">
       <text class='item-head'>活动内容：</text>
@@ -39,5 +39,5 @@
   <view class="submit-btn">
     <button size="default" type="primary" bindtap="handleAttend">报名</button>  
   </view> 
-  
+  <modal title="提示" hidden="{{modal.hidden}}" bindconfirm="listenerConfirm" bindcancel="listenerCancel">{{modal.title}}</modal>
 </view>

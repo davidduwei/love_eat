@@ -60,21 +60,7 @@ Page({
         // 使用 wx.createMapContext 获取 map 上下文
         this.mapCtx = wx.createMapContext('myMap');
         if (app.globalData.userInfo) {
-            this.initLocation(function(res) {
-                that.setData({
-                    markers: [{
-                        iconPath: "/images/type/1.png",
-                        id: 6,
-                        latitude: res.latitude,
-                        longitude: res.longitude,
-                        width: 50,
-                        height: 50,
-                        callout: {
-                            content: '<view class="callout">123</view>'
-                        }
-                    }]
-                })
-            })
+            this.initLocation();
             that.setData({
                 userInfo: app.globalData.userInfo,
                 hasUserInfo: true
@@ -102,12 +88,26 @@ Page({
         }
     },
     getRegionData(){
+        var that = this;
         this.mapCtx.getCenterLocation({
             success: function(res){
                 wx.request({
                     url: Api.getNearBy + res.longitude + '/' + res.latitude + '/1000', 
-                    success: function(res){
-                        console.log(res);
+                    success: function(data){
+                        var markers = [];
+                        data.data.map((res) => {
+                            markers.push({
+                                iconPath: "/images/type/"+(res.tagId || 'all')+".png",
+                                id: res.id,
+                                latitude: res.currentLatitude,
+                                longitude: res.currentLongitude,
+                                width: 50,
+                                height: 50
+                            })
+                        })
+                        that.setData({
+                            markers: markers
+                        })
                     }
                 })
             }

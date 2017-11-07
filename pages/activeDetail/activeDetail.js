@@ -1,42 +1,44 @@
 // pages/activeDetail/activeDetail.js
+var Api = require("../../api.js");
+var userId = wx.getStorageSync('userId');
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    detailData:{
-      subject:"周日永恒大地签约会活动（银泰楼）",
-      tag:[{id:0,tagName:'运动'},{id:1,tagName:'美食'}],
-      time:'17-01-01 16:00-18:00',
-      addr:'天府四街银泰城乐坊',
-      num:9,
-      total:12,
-      money:"30-50",
-      telNum:'15828181853',
-      content:'本次活动主要线下联谊会，主要是为了见某某某，我们的口号是：作作作作作作作作作作作作',
-      attendsList:[{id:0,name:'杨洋'},{id:1,name:'洋洋'},{id:2,name:'阳阳'},{id:2,name:'痒痒'}]
-  
-    },
-    tag:[],
-    attendsList:[]
+    detailData:{},
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-  
+    var _this = this;
+    console.log(options)
+    wx.request({
+      url: Api.getActivityDetail,
+      method: "GET",
+      data: { id: options.id },
+      header: {
+        "content-type": "application/json"
+      },
+      success: function (res) {
+        console.log(res)
+        if (res.statusCode == 200) {
+          _this.setData({
+            detailData: res.data
+          })
+        }
+      }
+    })
   },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-    this.setData({ 
-      tag: this.data.detailData.tag,
-      attendsList: this.data.detailData.attendsList
-    })
+   
   },
 
   /**

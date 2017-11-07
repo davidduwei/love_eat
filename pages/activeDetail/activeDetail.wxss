@@ -6,3 +6,7 @@
   line-height: 55px;
   min-height: 55px
 }
+.tag-detail{
+  height:60rpx;
+  vertical-align:middle;
+}

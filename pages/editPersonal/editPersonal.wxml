@@ -15,7 +15,7 @@
       <view class="flex-5">
         <text class="item-head">性别：</text>
         <view class="inline-box input-unreal input-edit">
-          <picker mode="selector" bindchange="bindPickerChangeSex" value="{{index}}" range="{{sex}}">  
+          <picker mode="selector" class="picker-input" bindchange="bindPickerChangeSex" value="{{index}}" range="{{sex}}">  
             <text class="picker">  
               {{sex[index]}}  
             </text>  
@@ -26,7 +26,7 @@
       <view class="flex-5">
         <text class="item-head">年龄：</text>
         <view class="inline-box input-unreal input-edit">
-          <picker mode="selector" bindchange="bindPickerChangeAge" value="{{age}}" range="{{ages}}">  
+          <picker mode="selector" class="picker-input" bindchange="bindPickerChangeAge" value="{{age}}" range="{{ages}}">  
             <text class="picker">  
               {{ages[age]}}  
             </text>  
@@ -35,11 +35,15 @@
       </view>
     </view>
     <view class="edit-hobby row-line-personal">
-      <view class="item-head">个人爱好：<span>{{chooseCount}}/5</span></view>
+      <view class="item-head">
+        个人爱好：<span>{{chooseCount}}/5</span>
+        <text class="warning-text">最多选择5类</text>
+      </view>
 
       <checkbox-group bindchange="checkboxChangeHobby">  
         <label class="checkbox" wx:for="{{hobbyChoice}}" wx:key="id">  
-          <checkbox value="{{item.id}}" checked="{{item.checked}}"/>{{item.hobbyName}}  
+          <checkbox value="{{item.id}}" disabled='{{item.disabled}}' checked="{{item.checked}}"/>
+          <text>{{item.name}}</text>
         </label>  
       </checkbox-group>  
 
@@ -50,7 +54,7 @@
     <view class="edit-area row-line-personal">
       <view  class="item-head">日常活动区域：</view>
       <view>
-         <image src="../../images/timg.jpg" />
+         <map id="map" scale="14" style="width: 100%; height: 150px;"></map>
       </view>
     </view>
     <view class="row-line-personal">

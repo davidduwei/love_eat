@@ -1,6 +1,7 @@
 var Api = require('../../api.js');
 var app = getApp()
 // pages/addActivity/addActivity.js
+var userInfo = wx.getStorageSync('userInfo');
 Page({
 
     /**

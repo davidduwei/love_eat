@@ -20,9 +20,17 @@
   margin: 20px 0
 }
 .input-edit{
-  height: auto;
   width: 50%;
-  text-align: center
+  text-align: center;
+  vertical-align:middle;
+  height:30px;
+
+}
+.picker-input{
+  height:30px;
+  position:relative;
+  top:-15px;
+
 }
 .item-head{
   margin:15px 0
@@ -30,6 +38,15 @@
 .checked-item label{
   margin-right: 10px;
 }
+.checkbox{
+  display:inline-block;
+  width:20%;
+}
 .checked-input{
   width:10px
+}
+.warning-text{
+  display: inline-block;
+  margin-left: 40px;
+  color: red;
 }

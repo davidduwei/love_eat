@@ -2,7 +2,7 @@
 //获取应用实例
 var Api = require('../../api.js')
 var app = getApp()
-
+var userInfo = wx.getStorageSync('userInfo');
 Page({
     data: {
         motto: 'Hello World',

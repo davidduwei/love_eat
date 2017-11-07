@@ -16,7 +16,7 @@
     <view class="detail-hobby">
       <view class="item-head">个人标签：</view>
       <view class="inline-box item-body" >
-        <text class="tag-style" wx:for="{{hobbyArr}}" wx:key="id">{{item.name}}</text>
+        <text class="tag-style active" wx:for="{{hobbyName}}">{{item}}</text>
       </view>
     </view>
     <view class="detail-area row-line-personal">

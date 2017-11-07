@@ -196,3 +196,7 @@ input:hover,.input-unreal:hover{
   background: #ff6f4c;
   color:#fff
 }
+.nodata-style{
+  margin-top:80rpx;
+  text-align:center;
+}
